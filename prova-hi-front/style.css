@@ -1,0 +1,24 @@
+.child-check-active {
+  display: block;
+}
+
+.child-check-hidden {
+  position: absolute;
+  display: none;
+}
+
+/* Customize the label (the container) */
+.container {
+  position: relative;
+  margin-bottom: 12px;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+/* On mouse-over, add a grey background color */
+.container:hover {
+  background-color: #ccc;
+}
