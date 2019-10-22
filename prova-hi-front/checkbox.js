@@ -2,8 +2,8 @@ function getNames() {
   var xhttp = new XMLHttpRequest();
   xhttp.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
-      let obj = JSON.parse(this.response);
-      createList(obj, false);
+      let elm = JSON.parse(this.response);
+      createList(elm, false);
     }
   };
   xhttp.open("GET", "https://raw.githubusercontent.com/HiPlatform/prova-frontend/master/data.json", true);
@@ -11,30 +11,27 @@ function getNames() {
 }
 
 function createList(json) {
-  parseIssues(json);
+  parseNames(json);
   document.getElementById("list").innerHTML = html;
 };
 
 html = "";
-function parseIssues(issues, hidden) {   
+function parseNames(elm, hidden) {   
   let checkHidden = hidden ? 'child-check-hidden' : "child-check-active";
 
   html += "<ul class='" + checkHidden +  "'>";
 
-  for (var code in issues) {
-      let level = issues[code].level + "." + code;
-
-      var issue = issues[code],
-          name = typeof(issue) == "string" ? issue : issue.name, // Get the right name according to each element
-          input = template(code, name, level); // Creates the html for the checkbox
+  for (var index in elm) {
+      let level = elm[index].level + "." + index;
+      let names = elm[index];
+      let name = typeof(names) == "string" ? names : names.name; // Get the right name according to each element
           
-      html += "<li>" + input;
+      html += "<li>" + template(index, name, level); // Creates the html for the checkbox
 
-      if (issue.children) {
-          parseIssues(issue.children, true); // Calls a function which does similar to this for with the children.
+      if (names.children) {
+          parseNames(names.children, true); // Calls a function which does similar to this for with the children.
       }
       html += "</li>";
-
   }
   html += "</ul>";
 }
@@ -47,16 +44,15 @@ function template(value, name, level) {
 }
 
 function toggleView(item) {
-  let ulChild = item.parentNode.lastChild;
+  let ulChild = item.parentNode.lastElementChild;
 
   if(ulChild.className.indexOf('-hidden') > -1 ) {
     ulChild.classList.remove('child-check-hidden');
     ulChild.classList.add("child-check-active");
   }else {
-    ulChild.classList.remove('child-check-active')
-    ulChild.classList.add("child-check-hidden")
+    ulChild.classList.remove('child-check-active');
+    ulChild.classList.add("child-check-hidden");
   };
-
 }
 
 
