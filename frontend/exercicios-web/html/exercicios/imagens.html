@@ -1,0 +1,79 @@
+<div wm-slider>
+  <p>
+    <img src="http://files.cod3r.com.br/curso-web/imagem1.jpg"
+      alt="Muro da Cidade"
+      width="513" height="342"
+      title="Muro da Cidade por Tarso Bessa">
+  </p>
+
+  <p>
+    <img src="http://files.cod3r.com.br/curso-web/imagem2.gif" alt="Intro cod3r" height="342">
+  </p>
+
+  <p class="circular">
+    <img src="http://files.cod3r.com.br/curso-web/imagem3.png" alt="Intro cod3r" height="342">
+  </p>
+
+  <p class="texto">
+      <img src="http://files.cod3r.com.br/curso-web/avatar.jpg" alt="Avatar" height="50" align="left">
+      Texto que é o que asdfas oas fdoasdf nmasdf asldfjas dfkjj
+      asldfkaj sdf asldfj asldf aojsdfjaodfjasd falsdkfjqpo ejas
+      asd;fjkf sladkf df kljdf dlkfj as;ldfjasl; dslkj a;lfd lkf
+      asldfj asl; dkjs;lfk as;dlj asl;fdkl;sf fljfce;cei d fdfs
+      asd;flk af dsj fujeif jme fif usjdf ás fíef  jfiw[e af s]
+    </p>
+
+    <p class="cidade"></p>
+
+    <p>
+      <picture>
+        <source srcset="http://files.cod3r.com.br/curso-web/logo-larga.png"
+          media="(min-width: 600px">
+        <img src="http://files.cod3r.com.br/curso-web/logo-estreita.png" alt="Logo">
+      </picture>
+    </p>
+
+</div>
+
+<style>
+  p {
+    position: absolute;
+    display: none;
+  }
+
+  .circular {
+    width: 513px;
+    background: #444;
+  }
+
+  .texto {
+    width: 400pc;
+  }
+
+  .texto img {
+    margin-right: 10px;
+  }
+
+  .cidade {
+    width: 513px;
+    height: 342px;
+    background-image: url('http://files.cod3r.com.br/curso-web/imagem4.jpg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 200%;
+  }
+
+</style>
+
+<script>
+  document.querySelectorAll('p').forEach(img => {
+    img.style.display = 'block'
+  })
+</script>
+
+<!-- document.querySelectorAll('[wm-folder]').forEach(folder => {
+  folder.onclick = function(e) {
+    const ul = folder.nextElementSibling
+    const d = ul.style.display
+    ul.style.display = d === 'none' ? 'block' : 'none'
+  } -->

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+
+<h1>Projeto</h1>
+<meta charset="UTF-8">
+
+<ul class="tree"> 
+  <li> 
+    <span wm-folder class="active cursor">backend</span>
+    <ul>
+      <li>
+        <span wm-folder class="active cursor">app</span>
+        <ul>
+          <li>Produtos</li>
+          <li>Usuários</li>
+          <li>servidor</li>
+        </ul>
+      </li>
+      <li>
+        <span wm-folder class="active cursor">config</span>
+        <ul>
+          <li>bancos</li>
+          <li>rotas</li>
+          <li>servidor</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>
+    <span wm-folder class="active cursor">frontend</span>
+    <ul>
+      <li>
+        <span wm-folder class="active cursor">public</span>
+        <ul>
+          <li>stily.css</li>
+          <li>app.js</li>
+          <li>index.html</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<link rel="stylesheet" href="http://files.cod3r.com.br/curso-web/tree.css">
+<style> 
+  .hidden {
+    display: none;
+  }
+  .active {
+    color: blue;
+  }
+  .cursor {
+    cursor: pointer;
+  }
+</style>
+
+<script> 
+  document.querySelectorAll('[wm-folder]').forEach(folder => {
+    folder.onclick = function(e) {
+      const ul = folder.nextElementSibling
+      const d = ul.style.display
+      ul.style.display = d === 'none' ? 'block' : 'none'
+    }
+  })
+  // addEventListener('click', e => {
+
+  //   let ulChild = e.target.parentNode.lastElementChild
+    
+  //   if(e.target.className.indexOf('cursor') != -1) {
+
+  //     if(ulChild.classList.indexOf('hidden') > -1) {
+  //     ulChild.classList.remove('hidden')
+  //     ulChild.classList.add('active')
+  //     }else {
+  //     ulChild.classList.remove('active')
+  //     ulChild.classList.add("hidden")
+  //     }
+      // e.closest(['ul']).parentNode.className.remove('hidden')
+  // }
+
+
+    // const clicked = e.target
+
+    // const ulChild = e.parentNode.lastElementChild
+
+    
+
+
+  // })
+
+</script>
