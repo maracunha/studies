@@ -1,21 +1,15 @@
-function getNames() {
-  var xhttp = new XMLHttpRequest();
-  xhttp.onreadystatechange = function() {
-    if (this.readyState == 4 && this.status == 200) {
-      let elm = JSON.parse(this.response);
-      createList(elm, false);
-    }
-  };
-  xhttp.open("GET", "https://raw.githubusercontent.com/HiPlatform/prova-frontend/master/data.json", true);
-  xhttp.send();
-}
+let html = "";
+const url = 'https://raw.githubusercontent.com/HiPlatform/prova-frontend/master/data.json'
+
+fetch(url)
+  .then(resp => resp.json())
+  .then(json => createList(json))
 
 function createList(json) {
-  parseNames(json);
+  parseNames(json, false);
   document.getElementById("list").innerHTML = html;
 };
 
-html = "";
 function parseNames(elm, hidden) {   
   let checkHidden = hidden ? 'child-check-hidden' : "child-check-active";
 
