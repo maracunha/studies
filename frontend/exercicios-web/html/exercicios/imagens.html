@@ -21,18 +21,16 @@
       asd;fjkf sladkf df kljdf dlkfj as;ldfjasl; dslkj a;lfd lkf
       asldfj asl; dkjs;lfk as;dlj asl;fdkl;sf fljfce;cei d fdfs
       asd;flk af dsj fujeif jme fif usjdf ás fíef  jfiw[e af s]
-    </p>
+  </p>
 
-    <p class="cidade"></p>
+  <p class="cidade"></p>
 
-    <p>
-      <picture>
-        <source srcset="http://files.cod3r.com.br/curso-web/logo-larga.png"
-          media="(min-width: 600px">
-        <img src="http://files.cod3r.com.br/curso-web/logo-estreita.png" alt="Logo">
-      </picture>
-    </p>
-
+  <p>
+    <picture>
+      <source srcset="http://files.cod3r.com.br/curso-web/logo-larga.png" media="(min-width: 600px">
+      <img src="http://files.cod3r.com.br/curso-web/logo-estreita.png" alt="Logo">
+    </picture>
+  </p>
 </div>
 
 <style>
@@ -47,7 +45,7 @@
   }
 
   .texto {
-    width: 400pc;
+    width: 400px;
   }
 
   .texto img {
@@ -66,14 +64,40 @@
 </style>
 
 <script>
-  document.querySelectorAll('p').forEach(img => {
-    img.style.display = 'block'
-  })
-</script>
+  function mover(elem, inicio, fim, passo, callback) { 
+    const novoInicio = inicio - passo
+    if(novoInicio >= fim) {
+      elem.style.left = novoInicio + 'px'
+      setTimeout(() => mover(elem, novoInicio, fim, passo, callback), 7)
+    }else {
+      callback()
+    }
+  }
 
-<!-- document.querySelectorAll('[wm-folder]').forEach(folder => {
-  folder.onclick = function(e) {
-    const ul = folder.nextElementSibling
-    const d = ul.style.display
-    ul.style.display = d === 'none' ? 'block' : 'none'
-  } -->
+  function slider() {
+    const elementos = document.querySelectorAll('[wm-slider] > p')
+    const slides = Array.from(elementos)
+    exibirSlide(slides, slides[0])
+  }
+
+  function exibirSlide(slides, slide) {
+    slide.style.display = 'block'
+    
+    const inicio = innerWidth
+    const fim = -slide.clientWidth
+
+    slide.style.left =  `${inicio}px`
+
+    mover(slide, inicio, fim, 5, ()=> {
+      exibirSlide(slides, getProximo(slides, slide))
+    })
+  }
+
+  function getProximo(lista, atual) {
+    const i = lista.indexOf(atual) + 1
+    return i < lista.length ? lista[i] : lista[0]
+  }
+
+  slider()
+  
+</script>

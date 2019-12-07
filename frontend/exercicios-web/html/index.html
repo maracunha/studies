@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html land="pt=br">
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Exercícios HTML</title>
+  <style>
+    #conteudo {
+      padding: 30px 0px;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Exercícios HTML</h1>
+  </header>
+    <nav>
+      <a href wm-nav="exercicios/teste.html">00 - Teste</a> |
+      <a href wm-nav="exercicios/listasAninhada.html">04 - Lista Aninhadas</a> |
+      <a href wm-nav="exercicios/imagens.html">08 - Imagens</a> |
+      <a href wm-nav="exercicios/video.html">09 - Video</a>
+    </nav>
+    <section id="conteudo"></section>
+    <footer>
+      Curso de Web Moderna
+    </footer>
+    <script>
+      document.querySelectorAll('[wm-nav]').forEach(link => {
+        const conteudo = document.getElementById('conteudo')
+
+        link.onclick = function(e) {
+          e.preventDefault()
+          fetch(link.getAttribute('wm-nav'))
+            .then(resp => resp.text())
+            .then(html => conteudo.innerHTML = html)
+        }
+      })
+    </script>
+</body>
+</html>
