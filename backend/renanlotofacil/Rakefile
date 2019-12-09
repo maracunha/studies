@@ -1,0 +1,7 @@
+
+task default: %w[send_to_slack]
+
+desc "Envia o resultado do jogo"
+task :send_to_slack do 
+  ruby "main.rb"
+end
