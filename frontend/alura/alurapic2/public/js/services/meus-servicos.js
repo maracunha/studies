@@ -6,4 +6,22 @@ angular.module('meusServicos', ['ngResource'])
         method: 'PUT'
       }
     });
+  })
+
+  .factory('cadatroDeFotos', function(recursoFoto, $q) {
+    var service = {}
+    service.cadastrar = function(foto) {
+      return $q(function(resolve, reject) {
+        
+        if(foto._id) {
+          recursoFoto.update({fotoId: foto._id}, foto, function() {
+            resolve({
+              mensagem: 'Foto' + foto.titulo + 'atualizada com sucesso',
+              inclusao: false
+            });
+          })
+        }
+      });
+    };
+    return service;
   });
