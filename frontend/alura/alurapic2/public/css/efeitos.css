@@ -13,3 +13,7 @@
   -o-transform: scale(0.1);
   transform: scale(0.1);
 }
+
+[meu-focus]:focus-visible {
+  border: 5px solid darkblue;
+}
