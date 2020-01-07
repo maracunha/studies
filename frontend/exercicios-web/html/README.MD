@@ -11,4 +11,5 @@ http-server -p 9090 .
 
 ## Para rodar o servidor sem cache
 http-server -c10 . (quarda o cache por 10 segundos)
-http-server -c-1 . (para não ter cache)
+Http-server -c-1 . (para não ter cache)
+
